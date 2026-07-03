@@ -22,7 +22,10 @@ It uses AI to provide quick answers, explanations, and study support in one plat
 
 🖥️ Tech Stack
 
-Frontend: HTML / CSS / JavaScript (or React if used)
-Backend: Node.js / Flask (update if different)
-AI Integration: OpenAI / API-based model (if used)
+Frontend: HTML / CSS / JavaScript 
+
+Backend: Node.js / Flask
+
+AI Integration: OpenAI / API-based model
+
 Deployment: Render
