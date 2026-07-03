@@ -14,10 +14,15 @@ It uses AI to provide quick answers, explanations, and study support in one plat
 ✨ Features
 
 🤖 AI-powered Q&A assistant
+
 📖 Smart study help and explanations
+
 📝 Easy-to-use interface
+
 ⚡ Fast and responsive web app
+
 🌐 Accessible from any device
+
 🔐 Secure and user-friendly experience
 
 🖥️ Tech Stack
