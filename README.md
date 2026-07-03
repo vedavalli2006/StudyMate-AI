@@ -13,24 +13,24 @@ It uses AI to provide quick answers, explanations, and study support in one plat
 
 ✨ Features
 
-🤖 AI-powered Q&A assistant
+    🤖 AI-powered Q&A assistant
 
-📖 Smart study help and explanations
+    📖 Smart study help and explanations
 
-📝 Easy-to-use interface
+    📝 Easy-to-use interface
 
-⚡ Fast and responsive web app
+    ⚡ Fast and responsive web app
 
-🌐 Accessible from any device
+    🌐 Accessible from any device
 
-🔐 Secure and user-friendly experience
+    🔐 Secure and user-friendly experience
 
 🖥️ Tech Stack
+ 
+     Frontend: HTML / CSS / JavaScript 
 
-Frontend: HTML / CSS / JavaScript 
+     Backend: Node.js / Flask
 
-Backend: Node.js / Flask
+     AI Integration: OpenAI / API-based model
 
-AI Integration: OpenAI / API-based model
-
-Deployment: Render
+      Deployment: Render
