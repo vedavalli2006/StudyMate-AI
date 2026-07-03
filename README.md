@@ -12,6 +12,7 @@ StudyMate AI is a web-based learning assistant designed to help students improve
 It uses AI to provide quick answers, explanations, and study support in one platform.
 
 ✨ Features
+
 🤖 AI-powered Q&A assistant
 📖 Smart study help and explanations
 📝 Easy-to-use interface
