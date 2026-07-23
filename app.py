@@ -4,9 +4,8 @@ import sqlite3
 import os
 import re
 
-# -------------------------------
 # App Configuration
-# -------------------------------
+
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DB_PATH = os.path.join(BASE_DIR, "database.db")
 
@@ -16,14 +15,14 @@ print(DB_PATH)
 app = Flask(__name__)
 app.secret_key = "studymate_secret"
 
-# -------------------------------
+
 # Database Initialization
-# -------------------------------
+
 def init_db():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
-    # Users table
+    
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS users(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,16 +31,13 @@ def init_db():
         password TEXT NOT NULL
     )
     """)
-      # Notes table
+     
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS notes(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         note TEXT NOT NULL
     )
     """)
-
-
-    # Contacts table
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS contacts(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -54,23 +50,22 @@ def init_db():
     conn.commit()
     conn.close()
 
-# -------------------------------
+
 # Home Page
-# -------------------------------
+
 @app.route("/")
 def home():
     return render_template("index.html")
 
-# -------------------------------
 # About Page
-# -------------------------------
+
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-# -------------------------------
+
 # Login
-# -------------------------------
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
 
@@ -103,9 +98,9 @@ def login():
 
     return render_template("login.html")
 
-# -------------------------------
+
 # Signup
-# -------------------------------
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
 
@@ -146,9 +141,9 @@ def signup():
 
     return render_template("signup.html")
 
-# -------------------------------
+
 # Dashboard
-# -------------------------------
+
 @app.route("/dashboard")
 def dashboard():
 
@@ -159,7 +154,7 @@ def dashboard():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
-    # Count total notes
+    
     cursor.execute("SELECT COUNT(*) FROM notes")
     total_notes = cursor.fetchone()[0]
 
@@ -174,9 +169,9 @@ def dashboard():
         progress=progress
     )
 
-# -------------------------------
+
 # Notes
-# -------------------------------
+
 @app.route("/notes", methods=["GET", "POST"])
 def notes():
 
@@ -196,14 +191,13 @@ def notes():
 
     cursor.execute("SELECT * FROM notes")
     all_notes = cursor.fetchall()
-
     conn.close()
 
     return render_template("notes.html", notes=all_notes)
 
-# -------------------------------
+
 # Delete Note
-# -------------------------------
+
 @app.route("/delete_note/<int:id>")
 def delete_note(id):
 
@@ -220,16 +214,16 @@ def delete_note(id):
 
     return redirect(url_for("notes"))
 
-# -------------------------------
+
 # AI Tools
-# -------------------------------
+
 @app.route("/ai-tools")
 def ai_tools():
     return render_template("ai-tools.html")
 
-# -------------------------------
+
 # Progress
-# -------------------------------
+
 @app.route("/progress")
 def progress():
 
@@ -245,7 +239,7 @@ def progress():
 
     conn.close()
 
-    # Progress based on notes
+    
     progress = min(total_notes * 10, 100)
 
     return render_template(
@@ -254,9 +248,9 @@ def progress():
         progress=progress
     )
 
-# -------------------------------
+
 # Contact
-# -------------------------------
+
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
 
@@ -281,9 +275,9 @@ def contact():
         return redirect(url_for("contact"))
 
     return render_template("contact.html")
-# -------------------------------
+
 # Logout
-# -------------------------------
+
 @app.route("/logout")
 def logout():
 
@@ -293,9 +287,13 @@ def logout():
 
     return redirect(url_for("login"))
 
-# -------------------------------
+
+# Initialize Database
+
+init_db()
+
+
 # Run App
-# -------------------------------
+
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
